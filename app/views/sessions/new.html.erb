@@ -1,2 +1,12 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, "Log In") %>
+
+<h1>Login</h1>
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control input-sm chat-input"%><br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, class: "form-control input-sm chat-input"%><br>
+
+  <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
+<% end %>

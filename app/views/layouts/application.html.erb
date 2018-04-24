@@ -10,5 +10,6 @@
 
   <body>
     <%= yield %>
+    <%= "Current User: #{@current_user.name}" if logged_in? %>
   </body>
 </html>
