@@ -1,0 +1,7 @@
+  <%= @events.each do |e| %>
+    <h2> <%= e.name %> </h2>
+    <h2> <%= e.creator.name %> </h2>
+    <h2> <%= e.location %> </h2>
+    <h2> <%= e.date_time %> </h2>
+    <h2> <%= e.description %> </h2>
+<% end %>
