@@ -2,4 +2,7 @@
   <h2> <%= @event.location %> </h2>
   <h2> <%= @event.date_time %> </h2>
   <h2> <%= @event.description %> </h2>
+  <% @event.attendees.each do |a| %>
+    <h2><%= "Attending: #{a.name}" %></h2>
+  <% end %>
   <h2> <%= "Creator: #{@event.creator.name}" %> </h2>
