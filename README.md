@@ -14,3 +14,6 @@ To remember: by convention, model names are singular but controller names are pl
 Problem: Create new user form - first I couldn't get the form to create a new db entry, and then I couldn't get the form to redirect to the new user page when successful.
 
 Solution: The UsersController#new needs to have a @user = User.new line so the form has something to iterate over. UsersController#create should have @user = User.new(user_params), and then @user.save. Then the user signup form can read: form_for @user (with no users_new_path argument required). Then when you redirect_to @user, Rails knows to render the show.html.erb template (as long as UsersController#show has '@user = User.find(params[:id])')
+
+Problem: Couldn't remember the exact steps for user login.
+Solution: Wrote a detailed checklist for setting up user login to use in future projects. 
