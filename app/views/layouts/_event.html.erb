@@ -1,0 +1,29 @@
+	<div class="col-md-6 col-centered">
+			<div class="panel">
+        <div class="text-center">
+          <div class="row">
+            <div class="col-sm-9">
+              <h3 class="pull-left"><%= event.name %> </h3>
+            </div>
+            <div class="col-sm-3">
+              <h4 class="pull-right">
+              <small><em><%= event.date_time.strftime("%B %d, %Y") if event.date_time %> <br> <%= event.date_time.strftime("%l %P") if event.date_time%></em></small>
+              </h4>
+            </div>
+        </div>
+    </div>
+  <div class="panel-body">
+      <b> <%= event.location %></b>
+      <p> Created by: <b><%= event.creator.name.capitalize %></b>
+      <br>Invited: <b>
+      <% event.attendees.each_with_index do |a, i|  %>
+        <% if a == event.attendees.last %>
+          <%= "#{a.name.capitalize}." %>
+        <% else %>
+          <%= "#{a.name.capitalize}, "%>
+        <% end %>
+      <% end %></b>
+      </p>
+      <%= event.description %>
+  </div>
+</div>

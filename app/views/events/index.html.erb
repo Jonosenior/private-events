@@ -16,23 +16,6 @@
 </div>
 
 
-<section>
-  <div class="container">
-      <div class="col-lg-7 col-lg-offset-5">
-        <div class="p-5">
-          <% @events.each do |e|%>
-            <br>
-            <h2 class="display-5"><%= e.name %></h2>
-            <h6> <b>Creator:</b> <%= e.creator.name %> </h6>
-            <h6> Location: <%= e.location %> </h6>
-            <h6> Time:<%= e.date_time %> </h6>
-            <h6> Description: <%= e.description %> </h6>
-            <h6> Attendees: <% e.attendees.each do |a| %>
-              <%= a.name.capitalize %>
-            <% end %> </h6>
-            <br><br>
-          <% end %>
-        </div>
-    </div>
-  </div>
-</section>
+<% @events.each do |event| %>
+  <%= render 'layouts/event', :event => event  %>
+<% end %>
