@@ -1,10 +1,8 @@
 <h1><%= @user.name %></h1>
 <p><%= @user.email %></p>
-<% if @user.created_events %>
-  <%= @user.created_events.each do |e| %>
-    <h2> <%= e.name %> </h2>
-    <h2> <%= e.location %> </h2>
-    <h2> <%= e.date_time %> </h2>
-    <h2> <%= e.description %> </h2>
+<h1><%= "#{@user.name}'s Events" %></h1>
+<% @user.created_events.each do |event| %>
+    <%= render 'layouts/event', :event => event  %>
   <% end %>
-<% end %>
+</div>
+</div>
