@@ -1,7 +1,38 @@
-  <%= @events.each do |e| %>
-    <h2> <%= e.name %> </h2>
-    <h2> <%= e.creator.name %> </h2>
-    <h2> <%= e.location %> </h2>
-    <h2> <%= e.date_time %> </h2>
-    <h2> <%= e.description %> </h2>
-<% end %>
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">Private Events</h1>
+      <%= link_to "Learn More", root_path, class: "btn btn-primary btn-xl rounded-pill mt-5"%>
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<div class="text-center text-black">
+  <br><h1 class="masthead-heading mb-0">Events</h1>
+</div>
+
+
+<section>
+  <div class="container">
+      <div class="col-lg-7 col-lg-offset-5">
+        <div class="p-5">
+          <% @events.each do |e|%>
+            <br>
+            <h2 class="display-5"><%= e.name %></h2>
+            <h6> <b>Creator:</b> <%= e.creator.name %> </h6>
+            <h6> Location: <%= e.location %> </h6>
+            <h6> Time:<%= e.date_time %> </h6>
+            <h6> Description: <%= e.description %> </h6>
+            <h6> Attendees: <% e.attendees.each do |a| %>
+              <%= a.name.capitalize %>
+            <% end %> </h6>
+            <br><br>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</section>

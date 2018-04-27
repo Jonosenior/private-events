@@ -21,6 +21,10 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'bootstrap-sass'
 
+gem 'bootstrap-datepicker-rails'
+gem 'jquery-rails'
+
+
 gem 'rails-footnotes', '~> 4.0', :group => :development
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

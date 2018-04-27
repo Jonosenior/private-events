@@ -1,12 +1,16 @@
 <% provide(:title, "Sign Up") %>
 
-<h1>New User</h1>
-<%= form_for(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: "form-control input-sm chat-input"%><br>
+<div class="row" id="add-top-padding">
+  <div class="col-md-4 col-centered">
+    <h1>New User.</h1>
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control input-sm chat-input"%><br>
 
-  <%= f.label :email %>
-  <%= f.text_field :email, class: "form-control input-sm chat-input"%><br>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control input-sm chat-input"%><br>
 
-  <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
-<% end %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
+    <% end %>
+  </div>
+</div>

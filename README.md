@@ -19,4 +19,7 @@ Problem: Couldn't remember the exact steps for user login.
 Solution: Wrote a detailed checklist for setting up user login to use in future projects.
 
 Problem: Couldn't destroy an event from the database in console.
-Solution: The problem was that Rails didn't know what to do with the associations connected to the Event instance in other tables (eg attendings table). By adding :dependent => :destroy, you destroy those dependencies too. 
+Solution: The problem was that Rails didn't know what to do with the associations connected to the Event instance in other tables (eg attendings table). By adding :dependent => :destroy, you destroy those dependencies too.
+
+Problem: Couldn't work out how to add attendees to an event - the models for User (as :attendee) and Event are connected by the through table and model Attendance.
+Solution: The trick is to add directly to the model of the join table. eg Attendance.new(:user_id, :event_id). Then Active Record can access attendees for an event with event.attendees. 
