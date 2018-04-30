@@ -1,15 +1,11 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
 
 #add-top-padding {
   padding-top: 120px;
 }
-
-/* #events-index {
-  background-color: #fdcb6e;
-
-} */
-
 
 .col-centered{
     float: none;
