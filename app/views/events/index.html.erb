@@ -13,11 +13,11 @@
 
 <div class="container" id="events-index">
   <div class="text-center text-black">
-    <br><h1 class="masthead-heading mb-0">Events</h1><br><br>
+    <br><h1 class="masthead-heading mb-0">Events</h1><br>
   </div>
-  <div class="row">
     <% @events.each do |event| %>
+    <div class="row">
       <%= render 'layouts/event', :event => event  %>
+    </div>
     <% end %>
-  </div>
 </div>
