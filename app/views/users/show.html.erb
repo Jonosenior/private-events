@@ -1,8 +1,13 @@
-
-<div class="container" id="add-top-padding">
-  <h1><%= @user.name %></h1>
-  <p><%= @user.email %></p>
-  <h5><%= "#{@user.name}'s Events" %></h5>
+<div class="container">
+    <div class="col-md-6 col-centered" id="add-top-padding">
+      <div class="text-center">
+      <h1><%= @user.name %></h1>
+      <p><%= @user.email %></p>
+      <h5><%= "#{@user.name}'s Events" %></h5>
+    </div>
+  </div>
+</div>
+<div class="container">
     <% @user.created_events.each do |event| %>
       <div class="row">
         <%= render 'layouts/event', :event => event  %>
