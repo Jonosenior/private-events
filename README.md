@@ -22,4 +22,10 @@ Problem: Couldn't destroy an event from the database in console.
 Solution: The problem was that Rails didn't know what to do with the associations connected to the Event instance in other tables (eg attendings table). By adding :dependent => :destroy, you destroy those dependencies too.
 
 Problem: Couldn't work out how to add attendees to an event - the models for User (as :attendee) and Event are connected by the through table and model Attendance.
-Solution: The trick is to add directly to the model of the join table. eg Attendance.new(:user_id, :event_id). Then Active Record can access attendees for an event with event.attendees. 
+Solution: The trick is to add directly to the model of the join table. eg Attendance.new(:user_id, :event_id). Then Active Record can access attendees for an event with event.attendees.
+
+Problem: Didn't know how to edit an event on console (eg, change the creator_id).
+Solution: e = Event.last; e.creator_id = 4; e.save
+
+Problem: When I delete a User in console, the user's created events does not get deleted - even though
+Solution: The difference between #delete and #destroy. #destroy activates the :dependent association options (eg dependent: :destroy), whereas #delete simply removes the entry from the db. 

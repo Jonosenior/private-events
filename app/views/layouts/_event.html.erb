@@ -13,7 +13,7 @@
         </div>
     </div>
   <div class="panel-body">
-      <b> <%= event.location %></b>
+      <span>Location: <b> <%= event.location %></b><span>
       <p> Created by: <b><%= event.creator.name.capitalize %></b>
       <br>Invited: <b>
       <% event.attendees.each_with_index do |a, i|  %>
