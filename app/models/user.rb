@@ -8,6 +8,6 @@ class User < ApplicationRecord
                             source: :event
 
   has_secure_password
-  validates :password, :email, :name, presence: true
-
+  validates :name, :email, presence: true
+  validates :password, length: { minimum: 5 }, allow_nil: true
 end

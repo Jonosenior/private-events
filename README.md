@@ -28,4 +28,8 @@ Problem: Didn't know how to edit an event on console (eg, change the creator_id)
 Solution: e = Event.last; e.creator_id = 4; e.save
 
 Problem: When I delete a User in console, the user's created events does not get deleted - even though
-Solution: The difference between #delete and #destroy. #destroy activates the :dependent association options (eg dependent: :destroy), whereas #delete simply removes the entry from the db. 
+Solution: The difference between #delete and #destroy. #destroy activates the :dependent association options (eg dependent: :destroy), whereas #delete simply removes the entry from the db.
+
+Problem: When I try to test a valid user fixture, it fails due to the password. What password-related fields should I use in my fixture, if the model relies on the #has_secure_password method?
+Solution: In the model, don't test for presence of password. This will break your tests, and is not required since #has_secure_password validates for presence anyway (it doesn't validate length or anything else, though). Then your fixture needs to contain a password_confirmation field, containing a digest produced by bcrypt:
+  password_digest: <%= BCrypt::Password.create('donuts') %>
