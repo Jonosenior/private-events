@@ -33,3 +33,6 @@ Solution: The difference between #delete and #destroy. #destroy activates the :d
 Problem: When I try to test a valid user fixture, it fails due to the password. What password-related fields should I use in my fixture, if the model relies on the #has_secure_password method?
 Solution: In the model, don't test for presence of password. This will break your tests, and is not required since #has_secure_password validates for presence anyway (it doesn't validate length or anything else, though). Then your fixture needs to contain a password_confirmation field, containing a digest produced by bcrypt:
   password_digest: <%= BCrypt::Password.create('donuts') %>
+
+Problem: Cannot get valid Event test to pass: the error was no creator, but when I tried to add a creator_id this didn't work.
+Solution: build the event like this: users(:valid).created_events.new(...). This is how the controller creates an event, and will automatically use the :valid user fixture. 
