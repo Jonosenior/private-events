@@ -2,7 +2,9 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
   def setup
-    @event = users(:valid).created_events.new(name: "25th Birthday Party",   description: "Some lorem ipsum text about the party.",   date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
+    @user = users(:valid)
+    @event = events(:valid)
+    # @event = users(:valid).created_events.new(name: "25th Birthday Party",   description: "Some lorem ipsum text about the party.",   date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
   end
 
   test 'valid event' do

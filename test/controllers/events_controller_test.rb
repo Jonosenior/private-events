@@ -2,12 +2,14 @@ require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @event = users(:valid).created_events.create(name: "25th Birthday Party", description: "Some lorem ipsum text about the party.", date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
+    # @event = users(:valid).created_events.create(name: "25th Birthday Party", description: "Some lorem ipsum text about the party.", date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
+    @event = events(:valid)
   end
 
   test 'index action should be success' do
+    # debugger
     get events_path
-    assert_template 'index'
+    assert_response :success
   end
 
   # test "should get create" do
