@@ -1,5 +1,7 @@
 # require 'pry'
 class EventsController < ApplicationController
+  before_action :logged_in_user, only: [:new]
+
   def new
     @event = Event.new
   end
@@ -33,6 +35,13 @@ class EventsController < ApplicationController
       u = User.find_by(name: a)
       next if u.nil?
       Attendance.new(user_id: u.id, event_id: @event.id).save
+    end
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_path
     end
   end
 

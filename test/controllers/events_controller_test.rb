@@ -19,7 +19,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new when logged in" do
-    login(@user)
+    log_in_as(@user)
     get new_event_path
     assert_response :success
   end

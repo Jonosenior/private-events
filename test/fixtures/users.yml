@@ -4,7 +4,7 @@ valid:
   name: Jon
   email: jon@jon.com
   password_digest: <%= BCrypt::Password.create('donuts') %>
-
+  
 short_password:
     name: Bob
     email: bob@bob.com
