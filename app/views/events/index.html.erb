@@ -2,7 +2,11 @@
   <div class="masthead-content">
     <div class="container">
       <h1 class="masthead-heading mb-0">Private Events</h1>
-      <%= link_to "Sign Up", new_user_url, class: "btn btn-primary btn-xl rounded-pill mt-5"%>
+      <% if logged_in? %>
+        <%= link_to "Create Event", new_event_url, class: "btn btn-primary btn-xl rounded-pill mt-5"%>
+      <% else %>
+        <%= link_to "Sign Up", new_user_url, class: "btn btn-primary btn-xl rounded-pill mt-5"%>
+      <% end %>
     </div>
   </div>
   <div class="bg-circle-1 bg-circle"></div>
