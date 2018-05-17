@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-
-
   test "layout links as not logged in" do
     get root_path
     assert_select "a[href=?]", root_path
