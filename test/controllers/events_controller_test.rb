@@ -38,11 +38,8 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy when creator is logged-in" do
     log_in_as(@user)
-    # debugger
-    assert_difference 'Event.count' do
+    assert_difference 'Event.count', -1 do
       delete event_path(@event)
-      # delete :destroy, id: @event.id
-      # delete :destroy, id: @user_destroy
     end
     assert_redirected_to root_url
   end

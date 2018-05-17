@@ -38,5 +38,8 @@ Problem: Cannot get valid Event test to pass: the error was no creator, but when
 Solution: build the event like this: users(:valid).created_events.new(...). This is how the controller creates an event, and will automatically use the :valid user fixture.
 Solution 2: You CAN add a creator directly to the event fixture. But don't use a creator_id column: use a 'creator' column (no id suffix) and put the creator id in there.
 
-Problem: In EventsControllerTest, I was got a 'no method "name"' error when checking if the index action would return success.
+Problem: In EventsControllerTest, I get a 'no method "name"' error when checking if the index action would return success.
 Solution: This took an a while, and many people looking at it. Firstly, I had to get the fixture set up correctly (see above - add a creator field to the event, populated with the fixture's ID). Secondly, I had added Bootstrap Sprockets but not changed the filetype of app/assets/stylesheets/application.css to application.scss. This fixed it...
+
+Problem: In EventsControllerTest, the assert_difference method is returning incorrect result.
+Solution: The method takes an optional argument showing which difference is to be expected. Since the default is 0, the test fails unless you set this to -1 (ie, one event is deleted).
