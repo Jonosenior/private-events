@@ -1,4 +1,3 @@
-# require 'pry'
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new]
   before_action :user_is_creator, only: [:destroy]
@@ -27,7 +26,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    # debugger
     Event.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to root_path
