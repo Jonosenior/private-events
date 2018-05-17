@@ -2,13 +2,12 @@ require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    # @event = users(:valid).created_events.create(name: "25th Birthday Party", description: "Some lorem ipsum text about the party.", date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
     @user = users(:valid)
+    @other_user = users(:hannah)
     @event = events(:valid)
   end
 
-  test 'index action should be success' do
-    # debugger
+  test 'should get index' do
     get events_path
     assert_response :success
   end
@@ -29,4 +28,22 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect destroy when non-creator is logged-in" do
+    log_in_as(@other_user)
+    assert_no_difference 'Event.count' do
+      delete event_path(@event)
+    end
+    assert_redirected_to root_url
+  end
+
+  test "should destroy when creator is logged-in" do
+    log_in_as(@user)
+    # debugger
+    assert_difference 'Event.count' do
+      delete event_path(@event)
+      # delete :destroy, id: @event.id
+      # delete :destroy, id: @user_destroy
+    end
+    assert_redirected_to root_url
+  end
 end
