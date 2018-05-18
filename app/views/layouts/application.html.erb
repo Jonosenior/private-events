@@ -23,7 +23,7 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div id="flash" class="alert alert-success"> "hello"</div>
+    <!-- <div id="flash" class="alert alert-success"> "hello"</div> -->
     <% flash.each do |message_type, message| %>
       <div id="flash" class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
