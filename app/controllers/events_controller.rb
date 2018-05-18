@@ -10,8 +10,10 @@ class EventsController < ApplicationController
     @event = current_user.created_events.new(event_params)
     if @event.save
       add_attendees
+      flash[:success] = "Event created!"
       redirect_to @event
     else
+      flash.now[:danger] = "Invalid information."
       render 'new'
     end
   end
@@ -27,7 +29,7 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "User deleted."
     redirect_to root_path
   end
 
