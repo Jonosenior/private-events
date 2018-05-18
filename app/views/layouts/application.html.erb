@@ -23,6 +23,10 @@
 
   <body>
     <%= render 'layouts/navbar' %>
+    <div id="flash" class="alert alert-success"> "hello"</div>
+    <% flash.each do |message_type, message| %>
+      <div id="flash" class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     <%= "Current User: #{@current_user.name}" if logged_in? %>
     <script src="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/#vendor/jquery/jquery.min.js"></script>

@@ -9,8 +9,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
+      flash[:success] = "Welcome to Private Events!"
       redirect_to @user
     else
+      flash.now[:danger] = "Oh no, invalid information!"
       render 'new'
     end
   end

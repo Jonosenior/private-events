@@ -1,6 +1,11 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+#flash {
+  margin-top: 90px;
+  position: relative;
+}
+
 #add-top-padding {
   padding-top: 120px;
 }
