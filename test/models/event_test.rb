@@ -42,6 +42,16 @@ class EventTest < ActiveSupport::TestCase
     assert Event.past.include?(@past_event)
   end
 
+  test 'invited users are added as attendees' do
+    @event.attendees = "Hannah"
+    assert @event.attendees.first.name == "Hannah"
+  end
+
+  test 'invited non-users are ignored' do
+    @event.attendees = "Sandy"
+    refute @event.attendees.first.name == "Sandy"
+  end
+
 
 
 end

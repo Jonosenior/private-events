@@ -17,9 +17,20 @@
 
 <div class="container" id="events-index">
   <div class="text-center text-black">
-    <br><h1 class="masthead-heading mb-0">Events</h1><br>
+    <br><h1 class="masthead-heading mb-0">Upcoming Events</h1><br>
   </div>
-  <% @events.each do |event| %>
+  <% @upcoming_events.each do |event| %>
+  <div class="row">
+    <%= render 'layouts/event', :event => event  %>
+  </div>
+  <% end %>
+</div>
+
+<div class="container" id="events-index">
+  <div class="text-center text-black">
+    <br><h1 class="masthead-heading mb-0">Past Events</h1><br>
+  </div>
+  <% @past_events.each do |event| %>
   <div class="row">
     <%= render 'layouts/event', :event => event  %>
   </div>

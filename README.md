@@ -1,6 +1,32 @@
 # Private Events
 
-This is (ongoing) Rails project will build an events site similar to Eventbrite, which allows users to create events and manage user signups.
+This is an events site (similar to Eventbrite), which allows users to create events and invite other other users to attend.
+
+## Feature Spec
+- User can sign up with name, email and password, and can log in.
+- Logged-in users can create events, invite other users to her own events, and delete her own events.
+- User can be either an event host or event attendee.
+- The Event index is organised into upcoming and past events.
+
+## Domain Model
+
+There is a User model, an Event model and an Attendance model. A user can create events, and attend many events. An event belongs to one creator and has many attendees. The many-to-many relationship between events and attendees is captured in the attendance model.
+
+#### User model
+- name: string
+- email: string
+- password_digest: string
+
+#### Event model
+- name: string
+- description: text
+- date_time: datetime
+- location: string
+- creator_id: integer
+
+#### Attendance model
+- user_id: integer
+- event_id: integer
 
 ## Notes
 

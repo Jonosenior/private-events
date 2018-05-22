@@ -24,7 +24,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @upcoming_events = Event.future
+    @past_events = Event.past
   end
 
   def destroy

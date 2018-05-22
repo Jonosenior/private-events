@@ -34,11 +34,13 @@ class EventsCreateTest < ActionDispatch::IntegrationTest
                                              location: "Jonathan's House",
                                              date_time: Time.now + 100,
                                              description: "Settlers of Catan night!",
-                                             attendees: "Hannah" }}
+                                             attendees: "Hannah, Dan" }}
     end
     refute flash.empty?
     follow_redirect!
     assert_select "div", /Housewarming/
+    assert_select "div", /Hannah/
+    refute_select "div", /Dan/
   end
 
 end
