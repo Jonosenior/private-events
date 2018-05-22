@@ -9,8 +9,9 @@
           <%= f.label :location %>
           <%= f.text_field :location, class: "form-control input-sm chat-input"%><br>
 
-          <%= f.label :date_time %>
-          <%= f.datetime_field :date_time, min: Date.today, class: "form-control input-sm chat-input"%><br>
+          <%= f.label :start_time %> <br>
+          <!-- <%= f.text_field :date_time, min: Date.today, class: "form-control input-sm chat-input" %> <br> -->
+          <%= f.text_field :date_time, id: "date_time", class: "form-control input-sm chat-input" %><br>
 
           <%= f.label :description %>
           <%= f.text_area :description, class: "form-control input-lg chat-input"%><br>
@@ -23,3 +24,9 @@
       </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#date_time').datetimepicker();
+    });
+</script>

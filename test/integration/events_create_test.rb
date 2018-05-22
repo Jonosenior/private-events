@@ -10,7 +10,6 @@ class EventsCreateTest < ActionDispatch::IntegrationTest
     get login_path
     post login_path, params: { session: { email: @user.email,
                                           password: "donuts" }}
-    assert is_logged_in?
     get new_event_url
     assert_select "form#new_event"
     assert_no_difference 'Event.count' do
