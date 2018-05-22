@@ -5,6 +5,9 @@ class Event < ApplicationRecord
                           source: :user
   validates :name, :description, :location, presence: true
   validate :not_in_past
+  scope :future, -> { where("date_time > ?", Time.now) }
+  scope :past, -> { where("date_time < ?", Time.now) }
+
 
 
   private

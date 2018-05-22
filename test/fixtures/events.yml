@@ -6,3 +6,10 @@ valid:
   date_time: 2030-09-24 12:45:00
   location: Repeater Bar
   creator_id: 201799169
+
+past:
+  name: Dungeons and Dragons session
+  description: Find treasure, fight orcs.
+  date_time: 2017-05-22 13:08:00
+  location: Rosie's House
+  creator_id: 201799169

@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy
-    flash[:success] = "User deleted."
+    flash[:success] = "Event deleted."
     redirect_to root_path
   end
 

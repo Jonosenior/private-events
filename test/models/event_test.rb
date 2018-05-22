@@ -4,6 +4,7 @@ class EventTest < ActiveSupport::TestCase
   def setup
     @user = users(:valid)
     @event = events(:valid)
+    @past_event = events(:past)
     # @event = users(:valid).created_events.new(name: "25th Birthday Party",   description: "Some lorem ipsum text about the party.",   date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
   end
 
@@ -30,5 +31,17 @@ class EventTest < ActiveSupport::TestCase
     @event.date_time = "2017-09-24 12:45:00"
     refute @event.valid?
   end
+
+  test 'future returns only future events' do
+    assert Event.future.include?(@event)
+    refute Event.future.include?(@past_event)
+  end
+
+  test 'past returns only past events' do
+    refute Event.past.include?(@event)
+    assert Event.past.include?(@past_event)
+  end
+
+
 
 end

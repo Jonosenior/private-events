@@ -25,7 +25,7 @@
       <% end %></b>
       </p>
       <%= event.description %>
-			<%= link_to "Delete", event, method: :delete %>
+			<%= link_to "Delete", event, method: :delete if @current_user == event.creator %>
 			<br><br><br><br>
   </div>
 </div>
