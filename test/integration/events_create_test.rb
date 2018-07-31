@@ -32,15 +32,15 @@ class EventsCreateTest < ActionDispatch::IntegrationTest
     assert_difference 'Event.count' do
       post events_path, params: { event: {   name: "Housewarming",
                                              location: "Jonathan's House",
-                                             date_time: Time.now + 100,
+                                             date_time: Time.now + 100.days,
                                              description: "Settlers of Catan night!",
-                                             attendees: "Hannah, Dan" }}
+                                             attendees: "Hannah Dan" }}
     end
     refute flash.empty?
     follow_redirect!
     assert_select "div", /Housewarming/
-    assert_select "div", /Hannah/
-    refute_select "div", /Dan/
+    assert_select "div", /Hannah/, "Existing users should appear"
+    assert_select "div", { html: /Dan/, count: 0 }, "Non-existent users should not appear"
   end
 
 end

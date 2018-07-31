@@ -69,3 +69,9 @@ Solution: This took an a while, and many people looking at it. Firstly, I had to
 
 Problem: In EventsControllerTest, the assert_difference method is returning incorrect result.
 Solution: The method takes an optional argument showing which difference is to be expected. Since the default is 0, the test fails unless you set this to -1 (ie, one event is deleted).
+
+Problem: In my integration events_create_test, I couldn't work out how to assert that the name of an invalid user wasn't present on the page.
+Solution: Use assert_select to target the div, then add a hash containing the count key, like so:
+```ruby
+assert_select "div", { html: /Dan/, count: 0 }, "Non-existent users should not appear"
+```

@@ -7,6 +7,7 @@ class Event < ApplicationRecord
   validate :not_in_past
   scope :future, -> { where("date_time > ?", Time.now) }
   scope :past, -> { where("date_time < ?", Time.now) }
+  accepts_nested_attributes_for :attendances
 
 
 

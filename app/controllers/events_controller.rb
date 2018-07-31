@@ -1,9 +1,12 @@
+require 'pry'
+
 class EventsController < ApplicationController
   before_action :logged_in_user, only: [:new]
   before_action :user_is_creator, only: [:destroy]
 
   def new
     @event = Event.new
+    @event.attendances.build
   end
 
   def create
@@ -20,7 +23,6 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @attendees = @event.attendees
   end
 
   def index
@@ -36,10 +38,11 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :location, :date_time)
+    params.require(:event).permit(:name, :description, :location, :date_time, attendees: [:names])
   end
 
   def add_attendees
+  #  binding.pry
     params[:event][:attendees].split(" ").each do |a|
       u = User.find_by(name: a)
       next if u.nil?

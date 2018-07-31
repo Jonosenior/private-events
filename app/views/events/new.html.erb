@@ -15,17 +15,15 @@
           <%= f.label :description %>
           <%= f.text_area :description, class: "form-control input-lg chat-input"%><br>
 
-          <%= f.label :attendees %>
-          <%= f.text_field :attendees, placeholder: "Jonathan Lucy Fabienne", class: "form-control input-sm chat-input"%><br>
+
+          <%= f.fields_for :attendees do |attendances_form| %>
+            <%= attendances_form.label :attendees %>
+            <%= attendances_form.text_field :names, placeholder: "Jonathan Lucy Fabienne", class: "form-control input-sm chat-input"%><br>
+          <% end %>
 
           <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
+
         <% end %>
       </div>
     </div>
 </div>
-
-<!-- <script type="text/javascript">
-    $(function () {
-        $('#date_time').datetimepicker();
-    });
-</script> -->
