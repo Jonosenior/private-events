@@ -1,11 +1,12 @@
 # Private Events
 
-This is an events site (similar to Eventbrite), which allows users to create events and invite other other users to attend.
+This is an events site, similar to Eventbrite, which allows users to create events and invite other other users to attend.
+
 
 ## Feature Spec
 - User can sign up with name, email and password, and can log in.
 - Logged-in users can create events, invite other users to her own events, and delete her own events.
-- User can be either an event host or event attendee.
+- User can be either an event host or an event attendee.
 - The Event index is organised into upcoming and past events.
 
 ## Domain Model
@@ -32,7 +33,7 @@ There is a User model, an Event model and an Attendance model. A user can create
 
 # List of problems and my solutions
 
-Note: This is a list of all points where I got stuck for at least a few minutes, and notes on what the solution was. It's here to remind me for the future and to chronicle my learning progression.
+Note: This is a list of all issues where I got stuck for at least a few minutes, and notes on what the solution was. It's here to help me in the future, and to chronicle my learning progression.
 
 Problem: I forgot to pluralise the User controller when I generated in Rails. After googling, it seems the best way to fix this is destroy and redo.
 To remember: by convention, model names are singular but controller names are plural (a User model; a Users controller).
