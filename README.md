@@ -2,6 +2,10 @@
 
 This is an events site, similar to Eventbrite, which allows users to create events and invite other other users to attend.
 
+You can try it out for yourself [here](https://secret-badlands-17915.herokuapp.com/).
+
+![Screenshot](app/assets/images/screenshot.png)
+
 
 ## Feature Spec
 - User can sign up with name, email and password, and can log in.
@@ -76,3 +80,31 @@ Solution: Use assert_select to target the div, then add a hash containing the co
 ```ruby
 assert_select "div", { html: /Dan/, count: 0 }, "Non-existent users should not appear"
 ```
+
+Problem: Deploying to Heroku always presents some issues. Basically, Heroku doesn't accept the SQLite3 database, and uses PostgreSQL instead. To accomodate this, add the following to your Gemfile to use PostgreSQL in the production environment:
+```
+group :production do
+  gem 'pg'
+end
+```
+and then move your SQLite3 Gem to the development and test environments only.
+```
+group :development, :test do
+  gem 'sqlite3'
+```
+Once you've made these changes, you should be able to successfully push the app to Heroku.
+
+Problem: Even after making the above changes, I was getting an error from Heroku: 'PG::UndefinedTable: ERROR: relation "creators" does not exist'.
+It seems this was an issue with my DB migrations, which weren't making it clear that the 'Creator' foreign key I had added into the Events table was pointing to the User table. So I changed this migration:
+```
+class AddCreatorToEvents < ActiveRecord::Migration[5.1]
+  def change
+    add_reference :events, :creator, index: true, foreign_key: true
+  end
+end
+```
+to this:
+```
+add_reference :events, :creator, index: true, foreign_key: {to_table: :users}
+```
+After restarting the database on Heroku, everything worked again.
