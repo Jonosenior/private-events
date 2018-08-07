@@ -38,15 +38,18 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :location, :date_time, attendees: [:names])
+    params.require(:event).permit(:name, :description, :location, :date_time)
   end
 
   def add_attendees
-  #  binding.pry
-    params[:event][:attendees].split(" ").each do |a|
+    # binding.pry
+    invited_list = params.permit(:event => { attendees: [:names] }).to_h[:event][:attendees][:names]
+    # invited_list = params.permit(event: :attendees).to_h[:event][:attendees].split(" ")
+    invited_list.split(" ").each do |a|
       u = User.find_by(name: a)
       next if u.nil?
-      Attendance.new(user_id: u.id, event_id: @event.id).save
+      @event.attendees << u
+      # Attendance.new(user_id: u.id, event_id: @event.id).save
     end
   end
 

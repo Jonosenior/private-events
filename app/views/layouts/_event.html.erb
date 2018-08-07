@@ -3,8 +3,12 @@
         <div class="text-center">
           <div class="row">
             <div class="col-sm-9">
-              <h3 class="pull-left"><%= event.name %> </h3>
+              <h3 class="pull-left"><%= link_to event.name, event %><a href="/users/<%=event.id%>"></a> </h3>
             </div>
+
+						<!-- # => <a href="/users/1">Profile</a> -->
+
+
             <div class="col-sm-3">
               <h4 class="pull-right">
               <small><em><%= event.date_time.strftime("%B %d, %Y") if event.date_time %> <br> <%= event.date_time.strftime("%l %P") if event.date_time%></em></small>

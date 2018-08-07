@@ -1,11 +1,12 @@
 require 'test_helper'
+require 'pry'
 
 class EventTest < ActiveSupport::TestCase
   def setup
     @user = users(:valid)
     @event = events(:valid)
     @past_event = events(:past)
-    # @event = users(:valid).created_events.new(name: "25th Birthday Party",   description: "Some lorem ipsum text about the party.",   date_time: "2018-09-24 12:45:00", location: "Repeater Bar")
+    @attendee = users(:hannah)
   end
 
   test 'valid event' do
@@ -43,15 +44,9 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'invited users are added as attendees' do
-    @event.attendees = "Hannah"
+    @event.attendees << @attendee
     assert @event.attendees.first.name == "Hannah"
   end
-
-  test 'invited non-users are ignored' do
-    @event.attendees = "Sandy"
-    refute @event.attendees.first.name == "Sandy"
-  end
-
 
 
 end
